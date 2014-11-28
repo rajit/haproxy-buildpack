@@ -40,7 +40,9 @@ compile_source() {
 }
 
 vendor_bin() {
-  cp $CACHE_DIR/$ARCHIVE_DIR/haproxy $BUILD_DIR/haproxy
+  mkdir $BUILD_DIR/bin
+  cp $VERSION_DIR/vendor/* $BUILD_DIR/bin
+  cp $CACHE_DIR/$ARCHIVE_DIR/haproxy $BUILD_DIR/bin/haproxy
 }
 
 get_source
