@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # bin/haproxy_bind <config-file>
 
+set -x
+
 CONFIG_ORIG=$1
 CONFIG_NEW=__haproxy.cfg
 
