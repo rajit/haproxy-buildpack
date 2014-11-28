@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# bin/haproxy_bind <config-file>
+
+CONFIG_ORIG=$1
+CONFIG_NEW=__haproxy.cfg
+
+env | sed 's/[\%]/\\&/g;s/\([^=]*\)=\(.*\)/s%${\1}%\2%/' > __sed.script
+cat $CONFIG_ORIG | sed -f __sed.script > "$CONFIG_NEW"
+rm __sed.script
+
+./bin/haproxy -f "$CONFIG_NEW"
